@@ -93,6 +93,7 @@
                                             <h4>عدد العملاء</h4>
                                         </div>
                                         <div class="col-5 text-right">
+
                                             <h4>2000</h4>
                                         </div>
                                     </div>
