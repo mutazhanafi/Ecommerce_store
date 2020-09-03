@@ -8,10 +8,10 @@
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="">الرئيسية </a>
+                                <li class="breadcrumb-item"><a href="">{{__('admin/content.home')}}  </a>
                                 </li>
 
-                                <li class="breadcrumb-item active">وسائل التوصيل
+                                <li class="breadcrumb-item active">{{__('admin/content.Shipping_methods')}}
                                 </li>
                             </ol>
                         </div>
@@ -25,7 +25,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form"> تعديل  وسيلة التوصيل </h4>
+                                    <h4 class="card-title" id="basic-layout-form"> {{__('admin/content.Edit_Shipping_methods')}} </h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -53,7 +53,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> الاسم </label>
+                                                            <label for="projectinput1"> {{__('admin/shippings.name_shippings')}} </label>
                                                             <input type="text" value="{{$shippingMethod -> value  }}" id="name"
                                                                    class="form-control"
                                                                    placeholder="  "
@@ -66,7 +66,7 @@
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> قيمه التوصيل </label>
+                                                            <label for="projectinput1">{{__('admin/shippings.plain_value')}} </label>
                                                             <input type="number" value="{{$shippingMethod -> plain_value}}" id="plain_value"
                                                                    class="form-control"
                                                                    placeholder="  "
@@ -85,10 +85,10 @@
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1"
                                                         onclick="history.back();">
-                                                    <i class="ft-x"></i> تراجع
+                                                    <i class="ft-x"></i>{{__('admin/content.back')}}
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
-                                                    <i class="la la-check-square-o"></i> حفظ
+                                                    <i class="la la-check-square-o"></i>{{__('admin/content.submit')}}
                                                 </button>
                                             </div>
                                         </form>

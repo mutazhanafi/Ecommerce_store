@@ -26,9 +26,9 @@ class SettingDatabaseSeeder extends Seeder
             'free_shipping_cost' => 0,
             'translatable' => [
                 'store_name' => 'Hanafi Store',
-                'free_shipping_label' => 'free shipping',
-                'local_label' => 'local shipping',
-                'outer_label' => 'outer shipping ',
+                'free_shipping_label' => 'توصيل مجاني',
+                'local_label' => 'توصيل داخلي',
+                'outer_label' => 'توصيل خارجي ',
             ],
         ]);
 
