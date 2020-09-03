@@ -13,6 +13,10 @@ return [
     'placeholder_password' => 'ادخل كلمة المرور',
     'remember_me' => 'تذكرني ',
     'login' => 'دخول',
+    'wellcome1' => 'مرحبا بك',
+    'logout' => 'تسجيل الخروج',
+    'edit profile' => ' تعديل الملف الشخصي',
+
 
 
 
