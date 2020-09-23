@@ -4,8 +4,12 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ShippingsRequest extends FormRequest
+class MainCategoryRequest extends FormRequest
 {
+    /**
+     * @var mixed
+     */
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -24,22 +28,17 @@ class ShippingsRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => 'required|exists:settings',
-            'value' => 'required',
-            'plain_value' => 'nullable|numeric',
+            'name' => 'required',
+            'slug' => 'required|unique:categories,slug,'.$this ->id
         ];
     }
-
     public function messages()
     {
         return [
+            'name.required' => __('admin/maincatogries.name.required') ,
 
-            'value.required' =>  __('admin/shippings.value.required') ,
-
-
-            'plain_value.required' =>  __('admin/shippings.plain_value.required') ,
+            'slug.required' => __('admin/maincatogries.slug.required')
 
         ];
     }
-
 }

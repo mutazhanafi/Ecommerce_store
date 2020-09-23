@@ -37,10 +37,10 @@ class ProfileController extends Controller
 
             $admin->update($request->all());
 
-            return redirect()->back()->with(['success' => 'تم التحديث بنجاح']);
+            return redirect()->back()->with(['success' => __('admin/profile.message_success')]);
 
         } catch (\Exception $ex) {
-            return redirect()->back()->with(['error' => 'هناك خطا ما يرجي المحاولة فيما بعد']);
+            return redirect()->back()->with(['error' => __('admin/profile.message_error')]);
 
         }
 
