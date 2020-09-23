@@ -18,6 +18,10 @@ return [
     'error new password' => '    كلمة المرور غير متطابقة   ',
     'confirm password' => '   تاكيد كلمة المرور  ',
     'save' => '  حفظ  ',
+    'message_success' => 'تم التحديث بنجاح ' ,
+    'message_error' => 'هناك خطا ما يرجي المحاولة فيما بعد'
+
+
 
 
 

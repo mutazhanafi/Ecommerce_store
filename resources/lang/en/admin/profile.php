@@ -18,6 +18,11 @@ return [
     'error new password' => '    The  Password Not Match  ',
     'confirm password' => '   Confirm Password  ',
     'save' => '   Save  ',
+    'message_success' => 'Updated Successfully ',
+    'message_error' => 'There is an Error , Please Try Again Later' ,
+
+
+
 
 
 
