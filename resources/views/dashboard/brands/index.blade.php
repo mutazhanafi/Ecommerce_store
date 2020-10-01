@@ -1,3 +1,4 @@
+
 @extends('layouts.admin')
 @section('content')
 
@@ -5,13 +6,13 @@
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-6 col-12 mb-2">
-                    <h3 class="content-header-title">  {{__('admin/maincatogries.main_categories')}}</h3>
+                    <h3 class="content-header-title">  {{__('admin/brands.brands')}}</h3>
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('admin/content.home')}}</a>
                                 </li>
-                                <li class="breadcrumb-item active"> {{__('admin/maincatogries.main_categories')}}
+                                <li class="breadcrumb-item active"> {{__('admin/brands.brands')}}
                                 </li>
                             </ol>
                         </div>
@@ -25,7 +26,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title"> {{__('admin/maincatogries.all-main_categories')}} </h4>
+                                    <h4 class="card-title"> {{__('admin/brands.all-brands')}} </h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -47,34 +48,29 @@
                                             class="table display nowrap table-striped table-bordered scroll-horizontal">
                                             <thead class="">
                                             <tr>
-                                                <th>  {{__('admin/maincatogries.name')}}</th>
-                                                <th>القسم الرئيسي </th>
-
-                                                <th> {{__('admin/maincatogries.slug')}}  </th>
-                                                <th> {{__('admin/maincatogries.status')}}</th>
-                                                <th>  {{__('admin/maincatogries.photo')}}</th>
-                                                <th> {{__('admin/maincatogries.opration')}}</th>
+                                                <th>  {{__('admin/brands.name')}}</th>
+                                                <th> {{__('admin/brands.status')}}</th>
+                                                <th>  {{__('admin/brands.photo')}}</th>
+                                                <th> {{__('admin/brands.opration')}}</th>
                                             </tr>
                                             </thead>
                                             <tbody>
 
-                                            @isset($categories)
-                                                @foreach($categories as $category)
+                                            @isset($brands)
+                                                @foreach($brands as $brand)
                                                     <tr>
-                                                        <td>{{$category -> name}}</td>
-                                                        <td>{{$category -> _parent -> name  ?? '--' }}</td>
-                                                        <td>{{$category -> slug}}</td>
-                                                        <td>{{$category -> getActive()}}</td>
-                                                        <td> <img style="width: 150px; height: 100px;" src=" "></td>
+                                                        <td>{{$brand -> name}}</td>
+                                                        <td>{{$brand -> getActive()}}</td>
+                                                        <td> <img style="width: 150px; height: 100px;" src="{{$brand -> photo }}"></td>
                                                         <td>
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic example">
-                                                                <a href="{{route('admin.maincategories.edit',$category -> id)}}"
-                                                                   class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">{{__('admin/maincatogries.edit')}}</a>
+                                                                <a href="{{route('admin.brands.edit',$brand -> id)}}"
+                                                                   class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">{{__('admin/brands.edit')}}</a>
 
 
-                                                                <a href="{{route('admin.maincategories.delete',$category -> id)}}"
-                                                                   class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">{{__('admin/maincatogries.delete')}}</a>
+                                                                <a href="{{route('admin.brands.delete',$brand -> id)}}"
+                                                                   class="btn btn-outline-danger btn-min-width box-shadow-3 mr-1 mb-1">{{__('admin/brands.delete')}}</a>
 
 
 

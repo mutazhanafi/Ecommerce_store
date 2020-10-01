@@ -7,10 +7,15 @@ return [
 
 
 
+
     'home' => 'Home',
     'show all' => 'Show All',
     'add new subsection' => 'Add New Subsection',
     'Add a new main section' => 'Add New Main Section',
+
+
+    'brands' => ' Brands  ',
+    'Add a new brands' => 'Add a New Brands',
 
 
     'main sections' => ' Main_Sections',

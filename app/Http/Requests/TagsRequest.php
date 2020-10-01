@@ -4,12 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MainCategoryRequest extends FormRequest
+class TagsRequest extends FormRequest
 {
-    /**
-     * @var mixed
-     */
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -29,17 +25,16 @@ class MainCategoryRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'type' => 'required|in:1,2',
-
-            'slug' => 'required|unique:categories,slug,'.$this ->id
+            'slug' => 'required|unique:tags,slug,'.$this -> id
         ];
     }
+
     public function messages()
     {
         return [
-            'name.required' => __('admin/maincatogries.name.required') ,
+            'name.required' => __('admin/tags.name.required') ,
 
-            'slug.required' => __('admin/maincatogries.slug.required')
+            'slug.required' => __('admin/tags.slug.required')
 
         ];
     }

@@ -43,7 +43,7 @@
             <li class="nav-item"><a href="{{route('admin.subcategories')}}"><i class="la la-group"></i>
                     <span class="menu-title" data-i18n="nav.dash.main">{{__('admin/sidebar.subsections')}}    </span>
                     <span
-                        class="badge badge badge-danger badge-pill float-right mr-2">{{\App\Models\Category::parent()-> count()}}</span>
+                        class="badge badge badge-danger badge-pill float-right mr-2">{{\App\Models\Category::child() -> count()}}</span>
                 </a>
                 <ul class="menu-content">
                     <li class="active"><a class="menu-item" href="{{route('admin.subcategories')}} "
@@ -51,6 +51,37 @@
                     </li>
                     <li><a class="menu-item" href=" {{route('admin.subcategories.create')}}" data-i18n="nav.dash.crypto">
                             {{__('admin/sidebar.add new subsection')}} </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item"><a href=""><i class="la la-group"></i>
+                    <span class="menu-title" data-i18n="nav.dash.main">{{__('admin/sidebar.brands')}} </span>
+                    <span
+                        class="badge badge badge-danger badge-pill float-right mr-2">
+                        {{\App\Models\Brand:: count()}}</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="active"><a class="menu-item" href=" {{route('admin.brands')}}"
+                                          data-i18n="nav.dash.ecommerce"> {{__('admin/sidebar.show all')}} </a>
+                    </li>
+                    <li><a class="menu-item" href="  {{route('admin.brands.create')}}" data-i18n="nav.dash.crypto">
+                            {{__('admin/sidebar.Add a new brands')}} </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item"><a href=""><i class="la la-group"></i>
+                    <span class="menu-title" data-i18n="nav.dash.main"> {{__('admin/tags.tags')}}</span>
+                    <span
+                        class="badge badge badge-danger badge-pill float-right mr-2">{{\App\Models\Tag::count()}}</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="active"><a class="menu-item" href="{{route('admin.tags')}}"
+                                          data-i18n="nav.dash.ecommerce"> {{__('admin/sidebar.show all')}} </a>
+                    </li>
+                    <li><a class="menu-item" href="{{route('admin.tags.create')}}" data-i18n="nav.dash.crypto">{{__('admin/tags.add-tags')}}
+                        </a>
                     </li>
                 </ul>
             </li>
