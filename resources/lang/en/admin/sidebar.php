@@ -7,13 +7,18 @@ return [
 
 
 
+
     'home' => 'Home',
     'show all' => 'Show All',
     'add new subsection' => 'Add New Subsection',
-    'Add a new main section' => 'Add New Main Section',
+    'Add a new main section' => 'Add New Categories',
 
 
-    'main sections' => ' Main_Sections',
+    'brands' => ' Brands  ',
+    'Add a new brands' => 'Add a New Brands',
+
+
+    'main sections' => ' Categories',
     'subsections' => ' Sub_Sections',
     'settings' => 'Settings',
     'shipping methods' => 'Shipping Methods',

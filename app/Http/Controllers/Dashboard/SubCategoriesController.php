@@ -45,11 +45,11 @@ class SubCategoriesController extends Controller
             $category->save();
             DB::commit();
 
-            return redirect()->route('admin.subcategories')->with(['success' => 'تم ألاضافة بنجاح']);
+            return redirect()->route('admin.subcategories')->with(['success' => __('admin/subcatogries.message_success_add')]);
 
         } catch (\Exception $ex) {
             DB::rollback();
-            return redirect()->route('admin.subcategories')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+            return redirect()->route('admin.subcategories')->with(['error' => __('admin/subcatogries.message_error')]);
         }
 
     }
@@ -63,7 +63,7 @@ class SubCategoriesController extends Controller
         $category = Category::orderBy('id', 'DESC')->find($id);
 
         if (!$category)
-            return redirect()->route('admin.subcategories')->with(['error' => 'هذا القسم غير موجود ']);
+            return redirect()->route('admin.subcategories')->with(['error' => __('admin/subcatogries.message_error-not found')]);
 
         $categories = Category::parent()->orderBy('id','DESC') -> get();
 
@@ -84,7 +84,7 @@ class SubCategoriesController extends Controller
             $category = Category::find($id);
 
             if (!$category)
-                return redirect()->route('admin.subcategories')->with(['error' => 'هذا القسم غير موجود']);
+                return redirect()->route('admin.subcategories')->with(['error' => __('admin/subcatogries.message_error-not found')]);
 
             if (!$request->has('is_active'))
                 $request->request->add(['is_active' => 0]);
@@ -97,10 +97,10 @@ class SubCategoriesController extends Controller
             $category->name = $request->name;
             $category->save();
 
-            return redirect()->route('admin.subcategories')->with(['success' => 'تم ألتحديث بنجاح']);
+            return redirect()->route('admin.subcategories')->with(['success' => __('admin/subcatogries.message_success')]);
         } catch (\Exception $ex) {
 
-            return redirect()->route('admin.subcategories')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+            return redirect()->route('admin.subcategories')->with(['error' => __('admin/subcatogries.message_error')]);
         }
 
     }
@@ -114,14 +114,14 @@ class SubCategoriesController extends Controller
             $category = Category::orderBy('id', 'DESC')->find($id);
 
             if (!$category)
-                return redirect()->route('admin.subcategories')->with(['error' => 'هذا القسم غير موجود ']);
+                return redirect()->route('admin.subcategories')->with(['error' => __('admin/subcatogries.message_error-not found')]);
 
             $category->delete();
 
-            return redirect()->route('admin.subcategories')->with(['success' => 'تم  الحذف بنجاح']);
+            return redirect()->route('admin.subcategories')->with(['success' => __('admin/subcatogries.message_delete')]);
 
         } catch (\Exception $ex) {
-            return redirect()->route('admin.subcategories')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+            return redirect()->route('admin.subcategories')->with(['error' => __('admin/subcatogries.message_error')]);
         }
     }
 

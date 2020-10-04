@@ -9,11 +9,11 @@
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="">الرئيسية </a>
+                                <li class="breadcrumb-item"><a href="">{{__('admin/content.home')}} </a>
                                 </li>
-                                <li class="breadcrumb-item"><a href=""> الاقسام ألفرعية  </a>
+                                <li class="breadcrumb-item"><a href="{{route('admin.maincategories')}}"> {{__('admin/subcatogries.sub_categories')}}</a>
                                 </li>
-                                <li class="breadcrumb-item active"> تعديل - {{$category -> name}}
+                                <li class="breadcrumb-item active">{{__('admin/subcatogries.edit')}} - {{$category -> name}}
                                 </li>
                             </ol>
                         </div>
@@ -27,7 +27,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form"> تعديل قسم  فرعي </h4>
+                                    <h4 class="card-title" id="basic-layout-form"> {{__('admin/subcatogries.edit-sub_categories')}}  </h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -55,13 +55,13 @@
                                                 <div class="text-center">
                                                     <img
                                                         src=""
-                                                        class="rounded-circle  height-150" alt="صورة القسم  ">
+                                                        class="rounded-circle  height-150" alt="{{__('admin/subcatogries.photo')}}">
                                                 </div>
                                             </div>
 
 
                                             <div class="form-group">
-                                                <label> صوره القسم </label>
+                                                <label>{{__('admin/subcatogries.photo')}} </label>
                                                 <label id="projectinput7" class="file center-block">
                                                     <input type="file" id="file" name="photo">
                                                     <span class="file-custom"></span>
@@ -73,13 +73,13 @@
 
                                             <div class="form-body">
 
-                                                <h4 class="form-section"><i class="ft-home"></i> بيانات القسم </h4>
+                                                <h4 class="form-section"><i class="ft-home"></i> {{__('admin/subcatogries.information_categories')}} </h4>
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label for="projectinput2"> أختر القسم </label>
+                                                            <label for="projectinput2"> {{__('admin/subcatogries.select_categories')}} </label>
                                                             <select name="parent_id" class="select2 form-control">
-                                                                <optgroup label="من فضلك أختر القسم ">
+                                                                <optgroup label="{{__('admin/subcatogries.please_select_categories')}}">
                                                                     @if($categories && $categories -> count() > 0)
                                                                         @foreach($categories as $mainCategory)
                                                                             <option
@@ -98,7 +98,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> اسم القسم
+                                                            <label for="projectinput1"> {{__('admin/subcatogries.part-name')}}
                                                             </label>
                                                             <input type="text" id="name"
                                                                    class="form-control"
@@ -113,7 +113,7 @@
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> اسم بالرابط
+                                                            <label for="projectinput1">  {{__('admin/subcatogries.slug_name')}}
                                                             </label>
                                                             <input type="text" id="name"
                                                                    class="form-control"
@@ -140,7 +140,7 @@
                                                                    class="switchery" data-color="success"
                                                                    @if($category -> is_active == 1)checked @endif/>
                                                             <label for="switcheryColor4"
-                                                                   class="card-title ml-1">الحالة  </label>
+                                                                   class="card-title ml-1">{{__('admin/subcatogries.status')}}  </label>
 
                                                             @error("is_active")
                                                             <span class="text-danger">{{$message }}</span>
@@ -154,10 +154,10 @@
                                             <div class="form-actions">
                                                 <button type="button" class="btn btn-warning mr-1"
                                                         onclick="history.back();">
-                                                    <i class="ft-x"></i> تراجع
+                                                    <i class="ft-x"></i> {{__('admin/subcatogries.back')}}
                                                 </button>
                                                 <button type="submit" class="btn btn-primary">
-                                                    <i class="la la-check-square-o"></i> تحديث
+                                                    <i class="la la-check-square-o"></i> {{__('admin/subcatogries.update')}}
                                                 </button>
                                             </div>
                                         </form>
