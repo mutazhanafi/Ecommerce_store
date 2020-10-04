@@ -38,6 +38,12 @@ return [
     'message_success_add' => 'تمت الاضافة بنجاح ' ,
     'message_delete' => 'تم الحذف بنجاح',
 
+    'main_categories1' => 'قسم رئيسي',
+    'sub_categories1' => 'قسم فرعي ',
+    'please_select_categories' => 'من فضلك اختر القسم ' ,
+    'select_maincategoriess' => 'اختر القسم الرئيسي' ,
+
+
 
 
 

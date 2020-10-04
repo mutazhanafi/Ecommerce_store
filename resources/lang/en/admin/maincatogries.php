@@ -37,6 +37,10 @@ return [
     'message_success_add' => 'Insert Data Successfully ',
 
     'message_delete' => ' Delete Successfully',
+    'main_categories1' => 'Main_categories',
+    'sub_categories1' => 'Sub_Categories',
+    'please_select_categories' => 'please_Select_Main_categories' ,
+    'select_maincategoriess' => 'Select_Main_Categories' ,
 
 
 

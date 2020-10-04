@@ -7,7 +7,7 @@ return [
 
 
     'home' => 'الرئيسية',
-    'main sections' => ' الاقسام الرئيسية',
+    'main sections' => ' الاقسام ',
     'subsections' => ' الاقسام الفرعية ',
 
     'add new subsection' => 'إضافة قسم فرعي جديد',
