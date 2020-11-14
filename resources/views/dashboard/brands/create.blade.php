@@ -52,7 +52,7 @@
                                             <div class="form-group">
                                                 <label>{{__('admin/brands.photo')}}  </label>
                                                 <label id="projectinput7" class="file center-block">
-                                                    <input type="file" id="file" name="photo">
+                                                    <input type="file" id="file" name="photo" >
                                                     <span class="file-custom"></span>
                                                 </label>
                                                 @error('photo')

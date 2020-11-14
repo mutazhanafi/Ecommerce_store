@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Enumerations\CategoryType;
 use App\Http\Requests\GeneralProductRequest;
 use App\Http\Requests\MainCategoryRequest;
+use App\Http\Requests\ProductImagesRequest;
 use App\Http\Requests\ProductPriceValidation;
 use App\Http\Requests\ProductStockRequest;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Product;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -20,7 +22,7 @@ class ProductsController extends Controller
 
     public function index()
     {
-        $products = Product::select('id','slug','price', 'created_at')->paginate(PAGINATION_COUNT);
+        $products = Product::select('id', 'slug', 'is_active', 'price', 'created_at')->paginate(PAGINATION_COUNT);
         return view('dashboard.products.general.index', compact('products'));
     }
 
@@ -66,61 +68,125 @@ class ProductsController extends Controller
         //save product tags
 
         DB::commit();
-        return redirect()->route('admin.products')->with(['success' => 'تم ألاضافة بنجاح']);
+        return redirect()->route('admin.products')->with(['success' => __('admin/maincatogries.message_success_add')]);
 
 
     }
 
 
+    public function getPrice($product_id)
+    {
+        $price = Product::orderBy('id', 'DESC')->find($product_id);
 
-    public function getPrice($product_id){
-
-        return view('dashboard.products.prices.create') -> with('id',$product_id) ;
+        return view('dashboard.products.prices.create', compact('price'))->with('id', $product_id);
     }
 
-    public function saveProductPrice(ProductPriceValidation $request){
+    public function saveProductPrice(ProductPriceValidation $request)
+    {
 
-        try{
+        try {
 
-            Product::whereId($request -> product_id) -> update($request -> only(['price','special_price','special_price_type','special_price_start','special_price_end']));
+            Product::whereId($request->product_id)->update($request->only(['price', 'special_price', 'special_price_type', 'special_price_start', 'special_price_end']));
 
-            return redirect()->route('admin.products')->with(['success' => 'تم التحديث بنجاح']);
-        }catch(\Exception $ex){
- 
+            return redirect()->route('admin.products')->with(['success' => __('admin/maincatogries.message_success')]);
+        } catch (\Exception $ex) {
+            return redirect()->route('admin.products')->with(['error' => __('admin/maincatogries.message_error')]);
+
         }
     }
 
 
+    public function getStock($product_id)
+    {
+        $price = Product::orderBy('id', 'DESC')->find($product_id);
 
-    public function getStock($product_id){
-
-        return view('dashboard.products.stock.create') -> with('id',$product_id) ;
+        return view('dashboard.products.stock.create', compact('price'))->with('id', $product_id);
     }
 
-    public function saveProductStock (ProductStockRequest $request){
+    public function savestock(ProductStockRequest $request)
+    {
 
 
-        Product::whereId($request -> product_id) -> update($request -> except(['_token','product_id']));
+        Product::whereId($request->product_id)->update($request->only(['sku', 'manage_stock', 'in_stock', 'qty']));
 
-        return redirect()->route('admin.products')->with(['success' => 'تم التحديث بنجاح']);
+        return redirect()->route('admin.products')->with(['success' => __('admin/maincatogries.message_success')]);
 
     }
 
+    public function delete_image()
+    {
+        if (request()->has('id')) {
+            $product = ProductImage::findOrfail(request('id'));
+            if (File::exists($product->photo)) {
+                File::delete($product->photo);
+            }
+            $product->delete();
+        }
+    }
+
+    public function addImages($product_id)
+    {
+        $data = Image::find($product_id);
+
+
+
+
+
+        return view('dashboard.products.images.create', compact('data'))->with('id', $product_id);
+    }
+
+
+    //to save images to folder only
+    public function saveProductImages(Request $request ){
+
+        $file = $request->file('dzfile');
+        $filename = uploadImage('products', $file);
+
+        return response()->json([
+            'name' => $filename,
+            'original_name' => $file->getClientOriginalName(),
+        ]);
+
+    }
+
+    public function saveProductImagesDB(ProductImagesRequest $request){
+
+        try {
+            // save dropzone images
+            if ($request->has('document') && count($request->document) > 0) {
+                foreach ($request->document as $image) {
+                    Image::create([
+                        'product_id' => $request->product_id,
+                        'photo' => $image,
+                    ]);
+                }
+            }
+
+            return redirect()->route('admin.products')->with(['success' => __('admin/maincatogries.message_success')]);
+
+        }catch(\Exception $ex){
+            return redirect()->route('admin.products')->with(['error' => __('admin/maincatogries.message_error')]);
+
+        }
+
+    }
     public function edit($id)
     {
 
-        //get specific categories and its translations
-        $category = Category::orderBy('id', 'DESC')->find($id);
+        $product = Product::find($id);
+        $data = [];
+        $data['brands'] = Brand::active()->select('id')->get();
+        $data['tags'] = Tag::select('id')->get();
+        $data['categories'] = Category::active()->select('id')->get();
+        if (!$product)
+            return redirect()->route('admin.products')->with(['error' => __('admin/maincatogries.message_error-not found')]);
 
-        if (!$category)
-            return redirect()->route('admin.maincategories')->with(['error' => 'هذا القسم غير موجود ']);
-
-        return view('dashboard.categories.edit', compact('category'));
+        return view('dashboard.products.general.edit', $data , compact('product'));
 
     }
 
 
-    public function update($id, MainCategoryRequest $request)
+    public function update($id, GeneralProductRequest $request)
     {
         try {
             //validation
@@ -128,26 +194,27 @@ class ProductsController extends Controller
             //update DB
 
 
-            $category = Category::find($id);
+            $product = Product::find($id);
 
-            if (!$category)
-                return redirect()->route('admin.maincategories')->with(['error' => 'هذا القسم غير موجود']);
+            if (!$product)
+                return redirect()->route('admin.products')->with(['error' => __('admin/maincatogries.message_error-not found')]);
+
 
             if (!$request->has('is_active'))
                 $request->request->add(['is_active' => 0]);
             else
                 $request->request->add(['is_active' => 1]);
 
-            $category->update($request->all());
+            $product->update($request->all());
 
             //save translations
-            $category->name = $request->name;
-            $category->save();
+            $product->name = $request->name;
+            $product->save();
+            return redirect()->route('admin.products')->with(['success' => __('admin/maincatogries.message_success')]);
 
-            return redirect()->route('admin.maincategories')->with(['success' => 'تم ألتحديث بنجاح']);
         } catch (\Exception $ex) {
+            return redirect()->route('admin.products')->with(['error' => __('admin/maincatogries.message_error')]);
 
-            return redirect()->route('admin.maincategories')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
         }
 
     }
@@ -158,17 +225,18 @@ class ProductsController extends Controller
 
         try {
             //get specific categories and its translations
-            $category = Category::orderBy('id', 'DESC')->find($id);
+            $product = Product::orderBy('id', 'DESC')->find($id);
 
-            if (!$category)
-                return redirect()->route('admin.maincategories')->with(['error' => 'هذا القسم غير موجود ']);
+            if (!$product)
+                return redirect()->route('admin.products')->with(['error' => 'هذا القسم غير موجود ']);
+            $product -> translations() ->delete(); ///حذف الترمات من كل الجداول/////
 
-            $category->delete();
+            $product->delete();
 
-            return redirect()->route('admin.maincategories')->with(['success' => 'تم  الحذف بنجاح']);
+            return redirect()->route('admin.products')->with(['success' => 'تم  الحذف بنجاح']);
 
         } catch (\Exception $ex) {
-            return redirect()->route('admin.maincategories')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
+            return redirect()->route('admin.products')->with(['error' => 'حدث خطا ما برجاء المحاوله لاحقا']);
         }
     }
 

@@ -67,6 +67,7 @@ class TagsController extends Controller
 
             //update DB
 
+        $id = $request->id;
 
             $tag = Tag::find($id);
 
@@ -95,10 +96,11 @@ class TagsController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy($id )
     {
-        try {
+     
             //get specific categories and its translations
+
             $tags = Tag::find($id);
 
             if (!$tags)
@@ -107,10 +109,6 @@ class TagsController extends Controller
             $tags->delete();
 
             return redirect()->route('admin.tags')->with(['success' => __('admin/tags.message_delete')]);
-
-        } catch (\Exception $ex) {
-            return redirect()->route('admin.tags')->with(['error' => __('admin/tags.message_error')]);
-        }
-    }
+}
 
 }

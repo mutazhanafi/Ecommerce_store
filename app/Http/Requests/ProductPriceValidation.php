@@ -34,4 +34,16 @@ class ProductPriceValidation extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'price.required' => __('admin/product.price.required') ,
+
+            'special_price_type.required' => __('admin/product.special_price_type.required'),
+            'special_price_start.required' => __('admin/product.special_price_start.required'),
+            'special_price_end.required' => __('admin/product.special_price_end.required'),
+
+        ];
+    }
 }
+

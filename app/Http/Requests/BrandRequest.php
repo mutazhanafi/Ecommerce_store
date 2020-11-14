@@ -33,7 +33,7 @@ class BrandRequest extends FormRequest
         return [
             'name.required' => __('admin/brands.name.required') ,
 
-            'photo.required' => __('admin/brands.photo.required'),
+            'photo' => __('admin/brands.photo.required'),
 
         ];
     }

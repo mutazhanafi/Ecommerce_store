@@ -44,12 +44,12 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body">
                                         <form class="form"
-                                              action="{{route('admin.products.stock.store')}}"
+                                              action="{{route('admin.products.stock.store',$price -> id)}}"
                                               method="POST"
                                               enctype="multipart/form-data">
                                             @csrf
-
                                             <input type="hidden" name="product_id" value="{{$id}}">
+
                                             <div class="form-body">
 
                                                 <h4 class="form-section"><i class="ft-home"></i> {{__('admin/product.Information_stock')}}   </h4>
@@ -61,7 +61,7 @@
                                                             <input type="text" id="sku"
                                                                    class="form-control"
                                                                    placeholder="  "
-                                                                   value="{{old('sku')}}"
+                                                                   value="{{$price -> sku}}"
                                                                    name="sku">
                                                             @error("sku")
                                                             <span class="text-danger">{{$message}}</span>
@@ -115,10 +115,10 @@
                                                             <input type="text" id="sku"
                                                                    class="form-control"
                                                                    placeholder="  "
-                                                                   value="{{old('qty')}}"
+                                                                   value="{{$price ->qty}}"
                                                                    name="qty">
                                                             @error("qty")
-                                                            <span class="text-danger">{{$message}}</span>
+                                                            <span class="text-danger">{{__('admin/product.qty.required')}}</span>
                                                             @enderror
                                                         </div>
                                                     </div>

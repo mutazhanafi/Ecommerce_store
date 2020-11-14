@@ -131,6 +131,7 @@ return redirect()->route('admin.brands')->with(['error' => __('admin/brands.mess
 
             if (!$brand)
                 return redirect()->route('admin.brands')->with(['error' => __('admin/brands.message_error-not found')]);
+            $brand -> translations() ->delete(); ///حذف الترمات من كل الجداول/////
 
             $brand->delete();
 

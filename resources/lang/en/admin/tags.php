@@ -34,6 +34,10 @@ return [
     'message_delete' => ' Delete Successfully',
 
 
+'are sure of the deleting process' => 'Are Sure Of The Deleting Process ?',
+
+'cancel' =>'Cancel' ,
+
 
 
 

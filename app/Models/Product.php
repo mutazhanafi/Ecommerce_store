@@ -90,13 +90,26 @@ class Product extends Model
         return $this->belongsToMany(Category::class, 'product_categories');
     }
 
-
-
+ public function scopeActive($query){
+        return $query -> where('is_active',1);
+    }
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'product_tags');
     }
+
+    public  function images(){
+        return $this->hasMany('App\Models\Image','product_id','id');
+    }
+
     public function getActive(){
         return  $this -> is_active  == 0 ?  __('admin/maincatogries.notActive')   : __('admin/maincatogries.Active') ;
     }
+
+
+    public function options()
+    {
+        return $this->hasMany(Option::class,'product_id');
+    }
+
 }

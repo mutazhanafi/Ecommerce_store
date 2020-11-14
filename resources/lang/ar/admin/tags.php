@@ -31,6 +31,8 @@ return [
     'message_error-not found' => 'هذه العلامة  غير موجودة' ,
     'message_success_add' => 'تمت الاضافة بنجاح ' ,
     'message_delete' => 'تم الحذف بنجاح',
+'are sure of the deleting process' => 'هل انت متاكد من عملية الحذف ؟',
+'cancel' =>'إغلاق' ,
 
 
 

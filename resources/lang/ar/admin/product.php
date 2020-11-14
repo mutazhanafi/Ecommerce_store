@@ -20,7 +20,7 @@ return [
     'add-product' => 'أضافة  منتج' ,
     'add_new_products' => ' أضافة  منتج جديد' ,
     'all_products' => ' جميع المنتجات' ,
-    'price' => ' السعر ' ,
+    'price' => ' سعر المنتج ' ,
     'price1' => ' سعر المنتج ' ,
     'add_price1' => 'إضافة سعر جديد ' ,
     'product_price' => 'سعر المنتج' ,
@@ -31,7 +31,7 @@ return [
     'percent' => 'نسبة مئوية' ,
     'start_date' => 'تاريخ البداية ' ,
     'end_date' => 'تاريخ النهاية' ,
-    'images' => 'الصور' ,
+    'images' => 'صور المنتج' ,
     'stock' => 'المستودع' ,
     'manage_stock' => 'المستودع' ,
     'add_manage_stock' => 'اضافة للمستودع ' ,
@@ -46,8 +46,30 @@ return [
     'not_Available' => 'غير متاح' ,
     'Available' => 'متاح' ,
 
-
-
+    'attributes'=> 'خصائص المنتج',
+    'add_attributes'=> 'إضافة خاصية ',
+    'information_attributes'=> 'بيانات خصائص المنتج',
+    'name_attributes'=> 'اسم الخاصية   ',
+    'all_attributes'=> 'جميع الخصائص',
+    'add_new_attributes'=> 'اضافة خاصية جديدة',
+    'edit_attributes'=> 'تعديل الخاصية ',
+    'edit_products'=>'تعديل المنتج',
+    'delete_products'=>'حذف المنتج',
+    'brand_id.required'=>'هذا الحقل مطلوب',
+    'add_new_option' => 'إضافة جديدة ' ,
+    'options' => 'قيم  الخصائص  ',
+    'pro_opions' => 'قيم  الخصائص   ' ,
+    'all_opions' => 'جميع  قيم اخصائص   ',
+    'pro'  => 'المنتج  ',
+    'attri' => 'الخصائص   ',
+    'add_opions' => 'إضافة  جديدة  ',
+    'information_options' => 'بيانات   قيم  الخصائص  ',
+    'select_Attributes' => 'اختر  الخاصية  ',
+    'select_produ' => 'اختر  المنتج   ',
+    
+    'please_select_Attributes' => 'من فضلك  اختر  الخاصية  ' ,
+    'please_select_produ' => 'من  فضلك   اختر  المتج' ,
+'edit_options' => 'تعديل  قيمالخصائص  ',
 
 
 
@@ -68,8 +90,24 @@ return [
     'save' => 'حفظ' ,
     'update' => 'تحديث' ,
     'name.required' => 'يجب إدخال الأسم' ,
+    'price.required' => 'يجب إدخال السعر' ,
+    'special_price_type.required' => 'يجب إدخال نوع  السعر' ,
+    'special_price_start.required' => 'يجب إدخال تاريخ البداية' ,
+    'qty.required' => 'يجب إدخال الكمية' ,
+    'special_price_end.required' => 'يجب إدخال تاريخ الهاية' ,
     'slug.required' => 'يجب إدخال إسم الرابط',
     'description.required' => 'يجب إدخال وصف المنتج ',
+    'add-images' => ' صور المنتج',
+    'add-imagess' => 'إضافة صور المنتج',
+    'delete-images' => 'حذف الصورة',
+    'Cancel the upload' => 'إلغاء الرفع',
+    'Are you sure to cancel uploading files?' => 'هل انت متاكد من الغاء رفع الملفات ؟',
+    'You cannot upload this type of file' => 'لايمكنك رفع هذا النوع من الملفات',
+    'Your browser does not support multiple images, drag and drop' => ' المتصفح الخاص بكم لا يدعم خاصيه تعدد الصوره والسحب والافلات',
+
+    'You cannot upload more than this' => 'لايمكنك رفع عدد اكثر من هذا',
+    'You can upload more than one image here' => 'يمكنك رفع اكثر من صوره هنا',
+
 
     'message_success' => 'تم التحديث بنجاح ' ,
     'message_error' => 'هناك خطا ما يرجي المحاولة فيما بعد',
@@ -86,6 +124,9 @@ return [
     'please_select_tags' => 'من فضلك اختر العلامات  التجارية ' ,
     'select_brands' => 'اختر الماركات التجارية  ' ,
     'please_select_brands' => 'من فضلك اختر الماركات التجارية ' ,
+
+    'this name already exists  before' => 'هذا  .
+     موجود   مسبقا  ' ,
 
 
 

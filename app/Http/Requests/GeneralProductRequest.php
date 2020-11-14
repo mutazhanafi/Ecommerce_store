@@ -26,7 +26,7 @@ class GeneralProductRequest extends FormRequest
     {
         return [
             'name' => 'required|max:100',
-            'slug' => 'required|unique:products,slug',
+            'slug' => 'required|unique:products,slug,'.$this ->id,
             'description' => 'required|max:1000',
             'short_description' => 'nullable|max:500',
             'categories' => 'array|min:1', //[]
@@ -44,6 +44,7 @@ class GeneralProductRequest extends FormRequest
 
             'slug.required' => __('admin/product.slug.required'),
             'description.required' => __('admin/product.description.required'),
+            'brand_id.required' => __('admin/product.brand_id.required'),
 
         ];
     }

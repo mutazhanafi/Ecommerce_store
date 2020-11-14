@@ -44,12 +44,12 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body">
                                         <form class="form"
-                                              action="{{route('admin.products.price.store')}}"
+                                              action="{{route('admin.products.price.store',$price -> id)}}"
                                               method="POST"
                                               enctype="multipart/form-data">
                                             @csrf
+                                            <input name="product_id" value="{{$price -> id}}" type="hidden">
 
-                                            <input type="hidden" name="product_id" value="{{$id}}">
                                             <div class="form-body">
 
                                                 <h4 class="form-section"><i class="ft-home"></i> {{__('admin/product.information_price')}}   </h4>
@@ -61,7 +61,7 @@
                                                             <input type="number" id="price"
                                                                    class="form-control"
                                                                    placeholder="  "
-                                                                   value="{{old('price')}}"
+                                                                   value="{{$price -> price}}"
                                                                    name="price">
                                                             @error("price")
                                                             <span class="text-danger">{{$message}}</span>
@@ -76,7 +76,7 @@
                                                             <input type="number"
                                                                    class="form-control"
                                                                    placeholder="  "
-                                                                   value="{{old('special_price')}}"
+                                                                   value="{{$price -> special_price}}"
                                                                    name="special_price">
                                                             @error("special_price")
                                                             <span class="text-danger">{{$message}}</span>
@@ -90,14 +90,15 @@
                                                         <div class="form-group">
                                                             <label for="projectinput1">{{__('admin/product.price_type')}}
                                                             </label>
-                                                            <select name="special_price_type" class="select2 form-control" multiple>
+
+                                                            <select name="special_price_type"  class="select2 form-control" id="id_h5_single" value="{{$price -> special_price_type}}" >
                                                                 <optgroup label="{{__('admin/product.please_select_price_type')}} ">
                                                                     <option value="percent">{{__('admin/product.percent')}}</option>
                                                                     <option value="fixed">{{__('admin/product.fixed')}}</option>
                                                                 </optgroup>
                                                             </select>
                                                             @error('special_price_type')
-                                                            <span class="text-danger"> {{$message}}</span>
+                                                            <span class="text-danger"> {{__('admin/product.special_price_type.required')}}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
@@ -115,11 +116,11 @@
                                                             <input type="date" id="price"
                                                                    class="form-control"
                                                                    placeholder="  "
-                                                                   value="{{old('special_price_start')}}"
+                                                                   value="{{$price -> special_price_start}}"
                                                                    name="special_price_start">
 
                                                             @error('special_price_start')
-                                                            <span class="text-danger"> {{$message}}</span>
+                                                            <span class="text-danger"> {{__('admin/product.special_price_start.required')}}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
@@ -131,11 +132,11 @@
                                                             <input type="date" id="price"
                                                                    class="form-control"
                                                                    placeholder="  "
-                                                                   value="{{old('special_price_end')}}"
+                                                                   value="{{$price -> special_price_end}}"
                                                                    name="special_price_end">
 
                                                             @error('special_price_end')
-                                                            <span class="text-danger"> {{$message}}</span>
+                                                            <span class="text-danger"> {{__('admin/product.special_price_end.required')}}</span>
                                                             @enderror
                                                         </div>
                                                     </div>

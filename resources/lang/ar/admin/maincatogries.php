@@ -34,7 +34,7 @@ return [
     'message_success' => 'تم التحديث بنجاح ' ,
     'message_error' => 'هناك خطا ما يرجي المحاولة فيما بعد',
 
-      'message_error-not found' => 'هذا القسم غير موجود' ,
+      'message_error-not found' => 'هذا العنصر غير موجود' ,
     'message_success_add' => 'تمت الاضافة بنجاح ' ,
     'message_delete' => 'تم الحذف بنجاح',
 

@@ -35,5 +35,13 @@ class ProductStockRequest extends FormRequest
 
         ];
     }
+    public function messages()
+    {
+        return [
+            'qty.required' => __('admin/product.qty.required') ,
 
+
+        ];
+    }
 }
+

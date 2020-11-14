@@ -1,8 +1,8 @@
 .dropzone {
-  min-height: 350px;
-  border: 2px dashed #666EE8;
-  background: #F4F5FA; }
-  .dropzone .dz-message {
+    min-height: 350px;
+    border: 2px dashed #666EE8;
+    background: #F4F5FA; }
+.dropzone .dz-message {
     font-size: 2rem;
     position: absolute;
     top: 50%;
@@ -12,7 +12,7 @@
     margin-top: -30px;
     color: #666EE8;
     text-align: center; }
-  .dropzone .dz-message:before {
+.dropzone .dz-message:before {
     content: "\e94b";
     font-family: 'feather';
     font-size: 80px;
@@ -29,21 +29,21 @@
     text-indent: 0px;
     font-weight: normal;
     -webkit-font-smoothing: antialiased; }
-  .dropzone .dz-preview.dz-image-preview {
+.dropzone .dz-preview.dz-image-preview {
     background: transparent; }
-  .dropzone .dz-preview .dz-remove {
+.dropzone .dz-preview .dz-remove {
     font-size: 1.1rem;
     color: #FF4961;
     line-height: 2rem; }
-    .dropzone .dz-preview .dz-remove:before {
-      content: "\e9e6";
-      font-family: 'feather';
-      display: inline-block;
-      line-height: 1;
-      z-index: 2;
-      text-indent: 0px;
-      font-weight: normal;
-      -webkit-font-smoothing: antialiased; }
-    .dropzone .dz-preview .dz-remove:hover {
-      text-decoration: none;
-      color: #ff1635; }
+.dropzone .dz-preview .dz-remove:before {
+    content: "\e9e6";
+    font-family: 'feather';
+    display: inline-block;
+    line-height: 1;
+    z-index: 2;
+    text-indent: 0px;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased; }
+.dropzone .dz-preview .dz-remove:hover {
+    text-decoration: none;
+    color: #ff1635; }

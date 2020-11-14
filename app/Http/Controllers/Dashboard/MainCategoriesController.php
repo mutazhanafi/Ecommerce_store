@@ -121,6 +121,7 @@ class MainCategoriesController extends Controller
 
             if (!$category)
                 return redirect()->route('admin.maincategories')->with(['error' => __('admin/maincatogries.message_error-not found')]);
+            $category -> translations() ->delete(); ///حذف الترمات من كل الجداول/////
 
             $category->delete();
 

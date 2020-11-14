@@ -1,17 +1,17 @@
 @extends('layouts.admin')
 @section('content')
 
-    <div class="app-content content">
+                         <div class="app-content content">
         <div class="content-wrapper">
             <div class="content-header row">
                 <div class="content-header-left col-md-6 col-12 mb-2">
-                    <h3 class="content-header-title"> {{__('admin/product.products')}} </h3>
+                    <h3 class="content-header-title">  {{__('admin/product.products')}}</h3>
                     <div class="row breadcrumbs-top">
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">{{__('admin/content.home')}}</a>
                                 </li>
-                                <li class="breadcrumb-item active">{{__('admin/product.products')}}
+                                <li class="breadcrumb-item active"> {{__('admin/product.products')}}
                                 </li>
                             </ol>
                         </div>
@@ -25,7 +25,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">{{__('admin/product.all_products')}} </h4>
+                                    <h4 class="card-title"> {{__('admin/product.all_products')}} </h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -51,6 +51,8 @@
                                                 <th> {{__('admin/product.slug')}} </th>
                                                 <th>{{__('admin/product.status')}}</th>
                                                 <th>{{__('admin/product.price')}}</th>
+
+
                                                 <th>{{__('admin/product.opration')}}</th>
                                             </tr>
                                             </thead>
@@ -66,18 +68,36 @@
                                                         <td>
                                                             <div class="btn-group" role="group"
                                                                  aria-label="Basic example">
+                                                                <a href="{{route('admin.products.images',$product -> id)}}"
+                                                                   class="btn btn-outline-warning  btn-min-width box-shadow-3 mr-1 mb-1">
+                                                                    {{__('admin/product.images')}}</a>
+
                                                                 <a href="{{route('admin.products.price',$product -> id)}}"
-                                                                   class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">
+                                                                   class="btn btn-outline-success btn-min-width box-shadow-3 mr-1 mb-1">
                                                                     {{__('admin/product.price')}}</a>
 
-                                                                <a href=""
-                                                                   class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">
-                                                                    {{__('admin/product.images')}}</a>
+
+
 
                                                                 <a href="{{route('admin.products.stock',$product -> id)}}"
                                                                    class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">
                                                                     {{__('admin/product.stock')}}</a>
+                                                                        </div>
+  <a href="{{route('admin.options.create',$product -> id)}}"
+                                                                   class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">
+                                                                    {{__('admin/product.options')}}</a>
+
+
+
                                                             </div>
+                                                            <a href="{{route('admin.products.edit',$product -> id)}}"
+                                                               class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">
+                                                                {{__('admin/product.edit_products')}}</a>
+
+                                                            <a href="{{route('admin.products.delete',$product -> id)}}"
+                                                               class="btn btn-outline-primary btn-min-width box-shadow-3 mr-1 mb-1">
+                                                                {{__('admin/product.delete_products')}}</a>
+                                                            <br>
                                                         </td>
                                                     </tr>
                                                 @endforeach
